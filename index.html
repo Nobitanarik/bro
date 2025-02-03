@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect After Clicking</title>
+</head>
+<body>
+
+    <a id="dynamicLink" href="https://web.earnbox.net/h5/#/" target="_blank">Open First Link</a>
+    <p id="countdown"></p>
+
+    <script>
+        // Define the second link
+        const link2 = "https://t.me/visalearning";
+        const countdownElement = document.getElementById("countdown");
+
+        // Add click event listener to the first link
+        document.getElementById("dynamicLink").addEventListener("click", function(event) {
+            // Start the countdown after clicking Link 1
+            let timeLeft = 10;
+            countdownElement.innerText = `Redirecting in ${timeLeft} seconds...`;
+
+            const countdown = setInterval(() => {
+                timeLeft--;
+                countdownElement.innerText = `Redirecting in ${timeLeft} seconds...`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = link2; // Redirect to second link
+                }
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
